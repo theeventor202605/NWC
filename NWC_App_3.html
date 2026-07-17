@@ -1506,7 +1506,7 @@ function decodeJWT(token){
 function resolveRole(email){
   const lower=String(email||"").toLowerCase().trim();
   if(lower&&lower===FALLBACK_ADMIN_EMAIL.toLowerCase().trim())return "Admin";
-  const match=store.employeeInfo.slice().reverse().find(e=>String(e.email||"").toLowerCase().trim()===lower);
+const match = store.employeeInfo.slice().reverse().find(e => String(e["البريد الإلكتروني"] || "").toLowerCase().trim() === lower);
   if(match&&["Admin","Supervisor","Viewer"].includes(match.role))return match.role;
   return null;
 }
